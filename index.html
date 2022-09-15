@@ -12,42 +12,42 @@
     <table>
         <tr>
             <td class="table-area">
-                <form action="">
+                <form autocomplete="off" onsubmit="event.preventDefault();onFormSubmit();" action="">
                     <div class="input">
-                        <label for="">Full Name</label>
-                        <input type="text" name="fullName" required>
+                        <label for="fullName">Full Name</label>
+                        <input type="text" name="fullName" id="fullName" required>
                     </div>
                     <div class="input">
-                        <label for="">Date of Birth</label>
-                        <input type="date" name="dateOfBirth">
+                        <label for="dateOfBirth">Date of Birth</label>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth">
                     </div>
                     <div class="input">
-                        <label for="">Phone Number</label>
-                        <input type="tel" name="phoneNumber" pattern="[6-7]{1}[0-9]{8}" required>
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" name="phoneNumber" id="phoneNumber" pattern="[6-7]{1}[0-9]{8}" required>
                         <small>Format: Spanish phone number, 9 digits (Ex: 623456789 or 723456789) </small>
                     </div>
                     <div class="input">
-                        <label for="">City</label>
-                        <input type="text" name="city">
+                        <label for="email">E-Mail</label>
+                        <input type="text" name="email" id="email">
                     </div>
                     <div class="form-btn">
-                        <input class="btn" type="submit" value="Submit">
+                        <input class="btn" type="submit" value="Submit" id="btn-submit">
                     </div>
                 </form>
             </td>
             <td class="table-area">
-                <table class="list">
+                <table class="list" id="tableList">
                     <thead>
                         <tr>
                             <th>Full Name</th>
                             <th>Date of Birth</th>
                             <th>Phone Number</th>
                             <th>City</th>
-                            
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        
                     </tbody>
                 </table>
             </td>
