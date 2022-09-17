@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="master.css">
     <title>Lynlker CRUD Signup Form</title>
 </head>
@@ -14,20 +17,20 @@
             <td class="table-area">
                 <form autocomplete="off" onsubmit="event.preventDefault();onFormSubmit();" action="">
                     <div class="input">
-                        <label for="fullName">Full Name</label>
+                        <label class="label" for="fullName">Full Name</label>
                         <input type="text" name="fullName" id="fullName" required>
                     </div>
                     <div class="input">
-                        <label for="dateOfBirth">Date of Birth</label>
+                        <label class="label" for="dateOfBirth">Date of Birth</label>
                         <input type="date" name="dateOfBirth" id="dateOfBirth">
                     </div>
                     <div class="input">
-                        <label for="phoneNumber">Phone Number</label>
+                        <label class="label" for="phoneNumber">Phone Number</label>
                         <input type="tel" name="phoneNumber" id="phoneNumber" pattern="[6-7]{1}[0-9]{8}" required>
                         <small>Format: Spanish phone number, 9 digits (Ex: 623456789 or 723456789) </small>
                     </div>
                     <div class="input">
-                        <label for="email">E-Mail</label>
+                        <label class="label" for="email">E-Mail</label>
                         <input type="text" name="email" id="email">
                     </div>
                     <div class="form-btn">

@@ -1,3 +1,16 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+body{
+    background-color: #790252;
+}
+
+.label{
+    font-weight: 700;
+}
+
 .input{
     display: flex;
     flex-direction: column;
@@ -11,20 +24,34 @@
 }
 
 .table-area{
-    border: 1px black solid;
+    border: 1px white solid;
 }
 
 thead{
-    background-color: lightgray;
+    background-color: #AF0171;
 }
 th{
     margin: 0 0.5rem;
 }
 
+table, thead, tbody, td, th{
+    border: 1px solid white;
+}
+
 .btn{
+    background-color: #AF0171;
     width: 9.5rem;
     height: 2.5rem;
     border: 0;
     border-radius: 7%;
     margin: 0.5rem 0.5rem;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #E80F88;
+}
+
+input{
+    color: black;
 }
