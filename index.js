@@ -35,8 +35,7 @@ function insertNew(data){
     cell4.innerHTML = data.email;
     // Se añaden también dos botones para editar o borrar la entrada.
     cell5 = newRow.insertCell(4);
-    cell5.innerHTML = `<a>Edit</a>
-                       <a>Delete</a>`;
+    cell5.innerHTML = "<a onClick='onEdit(this)'>Edit</a> <a>Delete</a>";
 }
 
 function resetForm(){
@@ -45,4 +44,12 @@ function resetForm(){
     document.getElementById("dateOfBirth").value = "";
     document.getElementById("phoneNumber").value = "";
     document.getElementById("email").value = "";
+}
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("dateOfBirth").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("phoneNumber").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("email").value = selectedRow.cells[3].innerHTML;
 }
