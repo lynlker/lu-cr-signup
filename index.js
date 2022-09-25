@@ -1,8 +1,16 @@
+// Aquí se declara selectedRow, fuera de cualquier función, para hacerla una variable global.
+var selectedRow = null;
+
 function onFormSubmit(){
     // Cuando clicamos Submit, se llamará a readForm(fun) que leerá lo que hemos escrito y nos devolverá un objeto que llamamos formData.
     var formData = readForm();
     // insertNew(fun) se encargará de coger nuestro objeto, e insertar sus datos en el tablero de la derecha.
-    insertNew(formData);
+    if (selectedRow == null){
+        insertNew(formData);
+    } else {
+        updateRecord(formData);
+    }
+    
     // Y con esta función, se borrarán todos los datos del formulario.
     resetForm();
 }
@@ -35,7 +43,15 @@ function insertNew(data){
     cell4.innerHTML = data.email;
     // Se añaden también dos botones para editar o borrar la entrada.
     cell5 = newRow.insertCell(4);
-    cell5.innerHTML = "<a onClick='onEdit(this)'>Edit</a> <a>Delete</a>";
+    cell5.innerHTML = `<a href='#' onClick='onEdit(this);event.preventDefault();'>Edit</a> 
+                       <a href='#' onClick='onDelete(this);event.preventDefault();'>Delete</a>`;
+}
+
+function updateRecord(formData){
+    selectedRow.cells[0].innerHTML = formData.fullName;
+    selectedRow.cells[1].innerHTML = formData.dateOfBirth;
+    selectedRow.cells[2].innerHTML = formData.phoneNumber;
+    selectedRow.cells[3].innerHTML = formData.email;
 }
 
 function resetForm(){
@@ -44,12 +60,31 @@ function resetForm(){
     document.getElementById("dateOfBirth").value = "";
     document.getElementById("phoneNumber").value = "";
     document.getElementById("email").value = "";
+    // Y se vuelve a poner selectedRow como nulo.
+
+    selectedRow = null;
 }
 
 function onEdit(td) {
+    // Esta función define lo que pasa cuando clicas el botón "Edit" de una fila.
+
+    // Almacenamos en la variable "selectedRow" el siguiente valor. Cogemos el botón "Edit" específico que hemos clicado, y buscamos el
+    // pariente (que sería la celda), y luego el parente de la celda (que sería, finalmente, la fila que queremos seleccionar).
     selectedRow = td.parentElement.parentElement;
+
+    // Con las próximas líneas, usando selectedRow, cogemos sus celdas una a una y las vamos colocando en el formulario de vuelta, usando
+    // getElementById para obtener los inputs específicos.
     document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
     document.getElementById("dateOfBirth").value = selectedRow.cells[1].innerHTML;
     document.getElementById("phoneNumber").value = selectedRow.cells[2].innerHTML;
     document.getElementById("email").value = selectedRow.cells[3].innerHTML;
+}
+
+function onDelete(td){
+    if(confirm("Are you sure you want to delete this record?")){
+        row = td.parentElement.parentElement;
+        document.getElementById("tableList").deleteRow(row.rowIndex);
+        resetForm();
+    }
+    
 }
