@@ -4,10 +4,13 @@ var selectedRow = null;
 function onFormSubmit(){
     // Cuando clicamos Submit, se llamará a readForm(fun) que leerá lo que hemos escrito y nos devolverá un objeto que llamamos formData.
     var formData = readForm();
-    // insertNew(fun) se encargará de coger nuestro objeto, e insertar sus datos en el tablero de la derecha.
+
+    // Aquí se hace una condición: Si selectedRow es nulo (no tenemos ninguna fila seleccionada), se insertará una nueva fila. Si no, se modificará una existente.
     if (selectedRow == null){
+        // insertNew(fun) se encargará de coger nuestro objeto, e insertar sus datos en el tablero de la derecha.
         insertNew(formData);
     } else {
+        // updateRecord(fun) se encargará de coger la fila entera y modificarla usando el formulario, para actualizar el tablero nuevamente.
         updateRecord(formData);
     }
     
@@ -48,6 +51,8 @@ function insertNew(data){
 }
 
 function updateRecord(formData){
+    // Se seleccionan cada una de las celdas de la fila que hayamos guardado en selectedRow y se modifican usando los datos de formData,
+    // que previamente creamos usando readForm(fun);
     selectedRow.cells[0].innerHTML = formData.fullName;
     selectedRow.cells[1].innerHTML = formData.dateOfBirth;
     selectedRow.cells[2].innerHTML = formData.phoneNumber;
